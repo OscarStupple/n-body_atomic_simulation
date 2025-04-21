@@ -6,10 +6,11 @@ var acceleration := Vector3(0,0,0)
 const charge := -1.602176634 * pow(10,-19)
 var time := 0.007
 
+const h := 6.62607015 * pow(10,-34)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	mass = 1.67262192595 * pow(10,-27) * sf 
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -34,4 +35,9 @@ func _process(_delta: float) -> void:
 	resultant_force = Vector3(0,0,0)
 
 func collide_with_proton():
+	var photon = load("res://scenes/photon.tscn").instantiate()
+	get_parent().add_child(photon)
+	photon.position = self.position
+	photon.velocity = -1 * self.linear_velocity
+	photon.frequency = (0.5 * mass * pow(linear_velocity.length(),2))/h
 	queue_free()

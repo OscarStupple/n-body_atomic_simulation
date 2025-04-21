@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/universe.gd" id="1_1e5h0"]
 [ext_resource type="PackedScene" uid="uid://dm6hojk15htlf" path="res://scenes/camera_controller.tscn" id="2_yaus5"]
 [ext_resource type="PackedScene" uid="uid://b627c4pjpxrmv" path="res://scenes/proton_ball.tscn" id="3_wgp7d"]
-[ext_resource type="PackedScene" uid="uid://cy0fmd4od201c" path="res://scenes/electron_ball.tscn" id="4_od8g7"]
+[ext_resource type="PackedScene" uid="uid://bkhovvidf5ipv" path="res://scenes/anti_proton_ball.tscn" id="4_f4uec"]
 
 [node name="Universe" type="Node3D"]
 script = ExtResource("1_1e5h0")
@@ -12,7 +12,7 @@ script = ExtResource("1_1e5h0")
 transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0, 5)
 
 [node name="proton_ball" parent="." instance=ExtResource("3_wgp7d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.12877, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
-[node name="electron_ball" parent="." instance=ExtResource("4_od8g7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97928, 0, 0)
+[node name="anti_proton_ball" parent="." instance=ExtResource("4_f4uec")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
