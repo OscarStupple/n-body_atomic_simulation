@@ -6,8 +6,6 @@ var acceleration := Vector3(0,0,0)
 const charge := -1.602176634 * pow(10,-19)
 var time := 0.007
 
-const NEUTRINO := preload("res://scenes/electron_neutrino_ball.tscn")
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	mass = 9.1093837139 * pow(10,-31) * sf 
@@ -24,6 +22,19 @@ func _process(_delta: float) -> void:
 	linear_velocity.y = linear_velocity.y + (acceleration.y * time)
 	linear_velocity.z = linear_velocity.z + (acceleration.z * time)
 	
-	move_and_collide(linear_velocity*time)
+	var collision_info = move_and_collide(linear_velocity*time)
+	
+	if collision_info != null:
+		for i in range(collision_info.get_collision_count()):
+			if collision_info.get_collider(i).name == "proton_ball":
+				collision_info.get_collider(i).collide_with_electron()
+				collide_with_proton()
 	
 	resultant_force = Vector3(0,0,0)
+
+func collide_with_proton():
+	var neutrino = load("res://scenes/electron_neutrino_ball.tscn").instantiate()
+	get_parent().add_child(neutrino)
+	neutrino.position = self.position
+	neutrino.linear_velocity = -1 * self.linear_velocity
+	queue_free()
