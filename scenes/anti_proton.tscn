@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqkhj4m4b6e87"]
+
+[ext_resource type="Script" path="res://scripts/anti_proton.gd" id="1_dgcll"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lp2pv"]
+albedo_color = Color(0, 0, 1, 1)
+emission_enabled = true
+emission = Color(0, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_y8w5p"]
+material = SubResource("StandardMaterial3D_lp2pv")
+radius = 0.215
+height = 0.43
+
+[node name="Anti-Proton" type="Node3D" groups=["particles"]]
+script = ExtResource("1_dgcll")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_y8w5p")

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkhovvidf5ipv"]
+
+[ext_resource type="Script" path="res://scripts/anti_proton_ball.gd" id="1_y3c2b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6g8a"]
+albedo_color = Color(0, 0, 1, 1)
+emission_enabled = true
+emission = Color(0, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_6w0iv"]
+material = SubResource("StandardMaterial3D_w6g8a")
+radius = 0.215
+height = 0.43
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n4xry"]
+radius = 0.215
+
+[node name="anti_proton_ball" type="RigidBody3D" groups=["particles"]]
+mass = 0.001
+gravity_scale = 0.0
+script = ExtResource("1_y3c2b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_6w0iv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_n4xry")

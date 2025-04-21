@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://183ld2mfg0rp"]
+
+[ext_resource type="Script" path="res://scripts/neutron.gd" id="1_3u1ee"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jp6ro"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5r6ps"]
+material = SubResource("StandardMaterial3D_jp6ro")
+radius = 0.215
+height = 0.43
+
+[node name="Neutron" type="Node3D" groups=["particles"]]
+script = ExtResource("1_3u1ee")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_5r6ps")

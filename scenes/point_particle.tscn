@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://6mh67axmue2l"]
+
+[ext_resource type="Script" path="res://scripts/point_particle.gd" id="1_ty5ax"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dtpuy"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bkvwv"]
+material = SubResource("StandardMaterial3D_dtpuy")
+
+[node name="point_particle" type="Node3D" groups=["particles"]]
+script = ExtResource("1_ty5ax")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_bkvwv")
