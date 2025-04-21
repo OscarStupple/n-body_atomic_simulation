@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cib7swse62t5c"]
 
-[ext_resource type="Script" path="res://scripts/photon.gd" id="1_wgfnk"]
+[ext_resource type="Script" path="res://scripts/photon_ball.gd" id="1_1e0vc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lcm74"]
 radius = 0.01
@@ -15,8 +15,8 @@ material = SubResource("StandardMaterial3D_i056b")
 radius = 0.1
 height = 0.2
 
-[node name="photon" type="RigidBody3D"]
-script = ExtResource("1_wgfnk")
+[node name="photon_ball" type="RigidBody3D"]
+script = ExtResource("1_1e0vc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["lepton"]]
 shape = SubResource("SphereShape3D_lcm74")

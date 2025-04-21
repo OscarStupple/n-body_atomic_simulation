@@ -42,11 +42,6 @@ func _process(_delta: float) -> void:
 			#print(Fe)
 			#print(Fy)
 			p1.resultant_force = p1.resultant_force + Fg + Fe + Fy
-			if p1.is_in_group("force_vector"):
-				p1.gforce = p1.gforce + Fg
-				p1.emforce = p1.emforce + Fe
-				p1.ykforce = p1.ykforce + Fy
-				print(Fg,Fe,Fy)
 	if Input.is_action_just_pressed("time_scale_up"):
 		time *= 2
 	if Input.is_action_just_pressed("time_scale_down"):
