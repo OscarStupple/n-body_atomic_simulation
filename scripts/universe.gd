@@ -6,8 +6,8 @@ const e := 2.7182818284590452353602875
 const sf := 2.562831446 * pow(10,14)
 const G := 6.6740831 * pow(10,-11)
 const ke := 1/(4*pi*8.8541878188*pow(10,-12))
-const g2 := 55*pi
-const am := 7.073058607*pow(10,16)
+const g2 := 1*pow(e,-5) #55*pi
+const am := 3.333333333*pow(10,14) / sf #7.073058607*pow(10,15)
 #const lp := 1.61622938 * pow(10,-35)
 #const tp := 5.3911613 * pow(10,-44)
 var time := 0.007
@@ -35,7 +35,8 @@ func _process(_delta: float) -> void:
 			Fg = v * ((G)*(p1.mass*p2.mass)/(r*r)) * sf 
 			Fe = v * ((ke)*(-1*p1.charge*p2.charge)/(r*r)) * sf
 			if not(p1.is_in_group("lepton") or p2.is_in_group("lepton")):
-				Fy = v * ((g2*((pow(e,(-1*(r/sf)*am)))/(r*r))*sf*sf)+(g2*((am*pow(e,(-1*(r/sf)*am)))/r)*sf))
+				Fy = -v * ((-g2 * pow((1.602176634 * pow(10,-19)),2)) * ((pow(e,(-am * r/sf)) / (r * r))*sf*sf + (am * pow(e,(-am * r/sf)) / r)*sf))
+				#Fy = v * ((g2*((pow(e,(-1*(r/sf)*am)))/(r*r))*sf*sf)+(g2*((am*pow(e,(-1*(r/sf)*am)))/r)*sf))
 			else:
 				Fy = Vector3(0,0,0)
 			#print(Fg)
