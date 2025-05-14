@@ -42,7 +42,10 @@ func _process(_delta: float) -> void:
 			#print(Fg)
 			#print(Fe)
 			#print(Fy)
-			p1.resultant_force = p1.resultant_force + Fg + Fe + Fy
+			if time > 0:
+				p1.resultant_force = p1.resultant_force + Fg + Fe + Fy
+			elif time < 0:
+				p1.resultant_force = p1.resultant_force -(Fg + Fe + Fy)
 	if Input.is_action_just_pressed("time_scale_up"):
 		time *= 2
 	if Input.is_action_just_pressed("time_scale_down"):
