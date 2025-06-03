@@ -5,10 +5,12 @@ var resultant_force := Vector3(0,0,0)
 var acceleration := Vector3(0,0,0)
 const charge := 0.0
 var time := 0.007
+const rest_E := 1.50534976514 * pow(10,-10)
+var energy := 1.50534976514 * pow(10,-10)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	mass = 1.67492750056 * pow(10,-27) * sf
+	mass = 1.67492750056 * pow(10,-27)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -29,6 +31,8 @@ func _process(_delta: float) -> void:
 			if collision_info.get_collider(i).name == "electron_neutrino_ball":
 				collision_info.get_collider(i).collide_with_neutron()
 				collide_with_electron_neutrino()
+	
+	energy = rest_E + 0.5 * mass * pow(linear_velocity.length(),2)
 	
 	resultant_force = Vector3(0,0,0)
 

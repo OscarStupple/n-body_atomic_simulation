@@ -12,7 +12,7 @@ material = SubResource("StandardMaterial3D_40fmo")
 radius = 0.1
 height = 0.2
 
-[node name="photon" type="Node3D"]
+[node name="photon" type="Node3D" groups=["particles", "photon"]]
 script = ExtResource("1_lwxyr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
