@@ -18,17 +18,13 @@ func _process(_delta: float) -> void:
 	time = self.get_parent().time
 	effective_mass = energy/(pow(c,2))
 	
-	if effective_mass != 0.0:
-		acceleration.x = resultant_force.x / effective_mass
-		acceleration.y = resultant_force.y / effective_mass
-		acceleration.z = resultant_force.z / effective_mass
+	acceleration = resultant_force.normalized()
 	
-	velocity.x = velocity.x + (acceleration.x * time)
-	velocity.y = velocity.y + (acceleration.y * time)
-	velocity.z = velocity.z + (acceleration.z * time)
+	velocity = (velocity + (acceleration * time)).normalized() * c
 	
-	position.x = position.x + (velocity.x * time) - (0.5 * acceleration.x * (time * time))
-	position.y = position.y + (velocity.y * time) - (0.5 * acceleration.y * (time * time))
-	position.z = position.z + (velocity.z * time) - (0.5 * acceleration.z * (time * time))
+	if is_nan(velocity.x) or is_nan(velocity.y) or is_nan(velocity.z):
+		velocity = Vector3(0,0,0)
+	
+	position = position + (velocity * time)
 	
 	resultant_force = Vector3(0,0,0)

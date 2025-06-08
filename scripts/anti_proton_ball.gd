@@ -17,22 +17,18 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	time = self.get_parent().time
 	if mass != 0.0:
-		acceleration.x = resultant_force.x / mass
-		acceleration.y = resultant_force.y / mass
-		acceleration.z = resultant_force.z / mass
+		acceleration = resultant_force / mass
 	
-	linear_velocity.x = linear_velocity.x + (acceleration.x * time)
-	linear_velocity.y = linear_velocity.y + (acceleration.y * time)
-	linear_velocity.z = linear_velocity.z + (acceleration.z * time)
+	linear_velocity = linear_velocity + (acceleration * time)
 	
 	var collision_info = move_and_collide(linear_velocity*time)
 	
-	if collision_info != null:
-		for i in range(collision_info.get_collision_count()):
-			if collision_info.get_collider(i).name == "proton_ball":
-				collision_info.get_collider(i).collide_with_anti_proton()
-				collide_with_proton()
-	
+	#if collision_info != null:
+		#for i in range(collision_info.get_collision_count()):
+			#if collision_info.get_collider(i).name == "proton_ball":
+				#collision_info.get_collider(i).collide_with_anti_proton()
+				#collide_with_proton()
+	#
 	energy = rest_E + 0.5 * mass * pow(linear_velocity.length(),2)
 	
 	resultant_force = Vector3(0,0,0)
@@ -41,6 +37,6 @@ func collide_with_proton():
 	var photon = load("res://scenes/photon.tscn").instantiate()
 	get_parent().add_child(photon)
 	photon.position = self.position
-	photon.velocity = -1 * self.linear_velocity * (c / self.linear_velocity.length())
+	photon.velocity = -1 * self.linear_velocity.normalized() * c
 	photon.energy = 0.5 * mass * pow(linear_velocity.length(),2)
 	queue_free()

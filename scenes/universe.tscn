@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://clsnldmmil36h"]
+[gd_scene load_steps=5 format=3 uid="uid://clsnldmmil36h"]
 
 [ext_resource type="Script" path="res://scripts/universe.gd" id="1_1e5h0"]
 [ext_resource type="PackedScene" uid="uid://dm6hojk15htlf" path="res://scenes/camera_controller.tscn" id="2_yaus5"]
-[ext_resource type="PackedScene" uid="uid://blmu00naru40x" path="res://scenes/neutron_ball.tscn" id="4_ytpep"]
+[ext_resource type="PackedScene" uid="uid://bkhovvidf5ipv" path="res://scenes/anti_proton_ball.tscn" id="3_qbwgc"]
+[ext_resource type="PackedScene" uid="uid://b627c4pjpxrmv" path="res://scenes/proton_ball.tscn" id="4_kf307"]
 
 [node name="Universe" type="Node3D"]
 script = ExtResource("1_1e5h0")
@@ -10,10 +11,10 @@ script = ExtResource("1_1e5h0")
 [node name="camera_controller" parent="." instance=ExtResource("2_yaus5")]
 transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0, 5)
 
-[node name="neutron_ball" parent="." instance=ExtResource("4_ytpep")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.922146, 0, 0)
-linear_velocity = Vector3(0, 0, 2)
+[node name="anti_proton_ball" parent="." instance=ExtResource("3_qbwgc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0151, 0, 0)
+linear_velocity = Vector3(0, 0, -1)
 
-[node name="neutron_ball2" parent="." instance=ExtResource("4_ytpep")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.980157, 0, 0)
-linear_velocity = Vector3(0, 0, -2)
+[node name="proton_ball" parent="." instance=ExtResource("4_kf307")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00864, 0, 0)
+linear_velocity = Vector3(0, 0, 1)

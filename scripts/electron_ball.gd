@@ -16,13 +16,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	time = self.get_parent().time
 	if mass != 0.0:
-		acceleration.x = resultant_force.x / mass
-		acceleration.y = resultant_force.y / mass
-		acceleration.z = resultant_force.z / mass
+		acceleration = resultant_force / mass
 	
-	linear_velocity.x = linear_velocity.x + (acceleration.x * time)
-	linear_velocity.y = linear_velocity.y + (acceleration.y * time)
-	linear_velocity.z = linear_velocity.z + (acceleration.z * time)
+	linear_velocity = linear_velocity + (acceleration * time)
 	
 	var collision_info = move_and_collide(linear_velocity*time)
 	
