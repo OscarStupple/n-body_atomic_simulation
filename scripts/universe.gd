@@ -26,10 +26,9 @@ func _process(_delta: float) -> void:
 			if not(p2.is_in_group("particles")) or p1 == p2 or p2.is_in_group("force_vector"):
 				continue
 			var v := Vector3(p2.position.x - p1.position.x, p2.position.y - p1.position.y, p2.position.z - p1.position.z)
-			var r := sqrt((v[0]*v[0])+(v[1]*v[1])+(v[2]*v[2]))
+			var r := v.length()
 			# r = r/sf
-			if r != 0:
-				v = v/r
+			v = v.normalized()
 			var Fg := Vector3()
 			var Fe := Vector3()
 			var Fy := Vector3()
@@ -47,10 +46,7 @@ func _process(_delta: float) -> void:
 			#print(Fg)
 			#print(Fe)
 			#print(Fy)
-			if time > 0:
-				p1.resultant_force = p1.resultant_force + Fg + Fe + Fy
-			elif time < 0:
-				p1.resultant_force = p1.resultant_force -(Fg + Fe + Fy)
+			p1.resultant_force = p1.resultant_force + Fg + Fe + Fy
 	if Input.is_action_just_pressed("time_scale_up"):
 		time *= 2
 	if Input.is_action_just_pressed("time_scale_down"):
